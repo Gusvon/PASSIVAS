@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcano Pessoal ✨</title>
+    <!-- Importando a fonte Poppins do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos Gerais e Fundo */
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            /* Fundo com um gradiente rosa suave e fofo */
+            background: linear-gradient(135deg, #ffe4e1 0%, #ffc0cb 100%);
+            color: #5a3d46; /* Texto em um tom de marrom rosado escuro para não ficar pesado como o preto */
+        }
+
+        /* O "Card" principal estilo Pinterest */
+        .card {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px 30px;
+            border-radius: 30px; /* Cantos bem arredondados */
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.2); /* Sombra rosa suave */
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Títulos */
+        h1 {
+            color: #ff1493; /* Deep Pink */
+            margin-top: 0;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        p.subtitle {
+            font-size: 14px;
+            color: #885a6a;
+            margin-bottom: 25px;
+        }
+
+        /* Container do Input */
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Estilizando o campo de data */
+        input[type="date"] {
+            font-family: 'Poppins', sans-serif;
+            padding: 15px;
+            border: 2px solid #ffb6c1; /* Rosa claro */
+            border-radius: 15px;
+            font-size: 16px;
+            color: #5a3d46;
+            outline: none;
+            transition: all 0.3s ease;
+            background-color: #fffafb;
+        }
+
+        input[type="date"]:focus {
+            border-color: #ff69b4; /* Hot Pink quando clica */
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+        }
+
+        /* Estilizando o Botão */
+        button {
+            font-family: 'Poppins', sans-serif;
+            padding: 15px;
+            background: linear-gradient(45deg, #ff69b4, #ff1493); /* Gradiente Hot Pink */
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.3);
+        }
+
+        button:hover {
+            transform: translateY(-2px); /* Efeito de flutuar ao passar o mouse */
+            box-shadow: 0 8px 20px rgba(255, 20, 147, 0.5);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        /* Área de Resultados */
+        #area-resultado {
+            margin-top: 30px;
+            display: none; /* Escondido até o cálculo ser feito */
+            animation: fadeIn 0.5s ease;
+        }
+
+        .passos-calculo {
+            font-size: 13px;
+            color: #a07486;
+            margin-bottom: 10px;
+            background: #fff0f5; /* Fundo lavanda blush */
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .resultado-destaque {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ff1493;
+            background: #ffe4e1;
+            padding: 15px;
+            border-radius: 15px;
+            border: 2px dashed #ff69b4;
+        }
+
+        /* Animação suave para o resultado aparecer */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>✨ Arcano Pessoal ✨</h1>
+        <p class="subtitle">Descubra a energia do Tarot que rege sua vida</p>
+        
+        <div class="input-group">
+            <input type="date" id="dataNascimento">
+            <button onclick="calcularArcano()">Descobrir meu Arcano 💖</button>
+        </div>
+
+        <div id="area-resultado">
+            <div id="passos" class="passos-calculo"></div>
+            <div id="resultado-final" class="resultado-destaque"></div>
+        </div>
+    </div>
+
+    <script>
+        const arcanos = {
+            1: "O Mago", 2: "A Sacerdotisa", 3: "A Imperatriz", 4: "O Imperador",
+            5: "O Hierofante", 6: "Os Enamorados", 7: "O Carro", 8: "A Justiça",
+            9: "O Eremita", 10: "A Roda da Fortuna", 11: "A Força", 12: "O Enforcado",
+            13: "A Morte", 14: "A Temperança", 15: "O Diabo", 16: "A Torre",
+            17: "A Estrela", 18: "A Lua", 19: "O Sol", 20: "O Julgamento",
+            21: "O Mundo", 22: "O Louco"
+        };
+
+        function calcularArcano() {
+            const dataInput = document.getElementById('dataNascimento').value;
+            const areaResultado = document.getElementById('area-resultado');
+            const divPassos = document.getElementById('passos');
+            const divResultado = document.getElementById('resultado-final');
+
+            if (!dataInput) {
+                alert("Por favor, insira uma data super especial primeiro! 💕");
+                return;
+            }
+
+            // Mostra a área de resultado
+            areaResultado.style.display = "block";
+
+            // Prepara os números
+            const numeros = dataInput.replace(/-/g, '');
+            let soma = 0;
+            let passosHTML = `<strong>Cálculo:</strong><br>`;
+            let equacaoInicial = [];
+
+            // Primeira soma
+            for (let i = 0; i < numeros.length; i++) {
+                soma += parseInt(numeros[i]);
+                equacaoInicial.push(numeros[i]);
+            }
+            passosHTML += `${equacaoInicial.join(' + ')} = <strong>${soma}</strong><br>`;
+
+            // Redução (se for maior que 22)
+            while (soma > 22) {
+                let novaSoma = 0;
+                let somaStr = soma.toString();
+                let equacaoReducao = [];
+                
+                for (let i = 0; i < somaStr.length; i++) {
+                    novaSoma += parseInt(somaStr[i]);
+                    equacaoReducao.push(somaStr[i]);
+                }
+                passosHTML += `Como ${soma} > 22: ${equacaoReducao.join(' + ')} = <strong>${novaSoma}</strong><br>`;
+                soma = novaSoma;
+            }
+
+            // Atualiza o HTML
+            divPassos.innerHTML = passosHTML;
+            divResultado.innerHTML = `${soma} - ${arcanos[soma]} 🔮`;
+        }
+    </script>
+
+</body>
+</html>

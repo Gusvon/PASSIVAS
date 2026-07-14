@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arcano Pessoal 🎀✨</title>
-    <!-- Fontes fofas e modernas: Fredoka para títulos e Nunito para textos -->
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Meu Mapa Astral Premium 🎀✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Fundo Mágico: Rosa, Branco e Azul Bebê (Estética Trans/Soft) */
+        /* Fundo Mágico: Rosa, Branco e Azul Bebê (Bandeira Trans) */
         body {
             font-family: 'Nunito', sans-serif;
             display: flex;
@@ -18,249 +17,429 @@
             background-color: #ffc0cb;
             background-image: 
                 radial-gradient(at 20% 20%, #ff9a9e 0px, transparent 50%),
-                radial-gradient(at 80% 80%, #5bcefa 0px, transparent 50%), /* Toque de azul bebê */
+                radial-gradient(at 80% 80%, #5bcefa 0px, transparent 50%),
                 radial-gradient(at 50% 50%, #ffffff 0px, transparent 60%);
+            background-attachment: fixed;
             color: #6d4c5a;
             padding: 20px;
             box-sizing: border-box;
         }
 
-        /* Cartão Glassmorphism (Vidro Fosco) */
-        .card {
-            background-color: rgba(255, 255, 255, 0.65);
-            padding: 40px 30px;
+        /* Container Principal */
+        .container {
+            background-color: rgba(255, 255, 255, 0.7);
             border-radius: 40px;
-            box-shadow: 0 20px 40px rgba(255, 105, 180, 0.15);
-            border: 2px solid rgba(255, 255, 255, 0.8);
-            text-align: center;
-            max-width: 420px;
+            box-shadow: 0 20px 50px rgba(255, 105, 180, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            max-width: 600px;
             width: 100%;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            overflow: hidden;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            position: relative;
         }
 
-        /* Títulos fofinhos */
+        /* Imagem de Banner Estética */
+        .banner-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            /* Imagem de nuvens rosa/azul pastel */
+            background-image: url('https://images.unsplash.com/photo-1531642765602-5cae8bbbf285?q=80&w=800&auto=format&fit=crop');
+            background-position: center;
+            border-bottom: 3px solid #fff;
+            position: relative;
+        }
+
+        .banner-img::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 50%;
+            background: linear-gradient(to top, rgba(255,255,255,0.8), transparent);
+        }
+
+        .conteudo {
+            padding: 30px 40px 40px 40px;
+        }
+
         h1 {
             font-family: 'Fredoka', sans-serif;
             color: #ff3385;
-            margin-top: 0;
-            font-size: 32px;
-            letter-spacing: 0.5px;
+            margin-top: -20px;
+            margin-bottom: 5px;
+            font-size: 36px;
+            text-align: center;
             text-shadow: 2px 2px 0px #ffffff;
+            position: relative;
+            z-index: 2;
         }
 
         p.subtitle {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 600;
-            color: #b05c8a;
-            margin-bottom: 25px;
+            color: #5bcefa;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 0px #ffffff;
         }
 
+        /* Formulário */
         .input-group {
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 15px;
         }
 
-        /* Campo de Data tipo Pílula */
-        input[type="date"] {
+        .input-group label {
+            font-size: 14px;
+            font-weight: 800;
+            color: #ff758c;
+            margin-bottom: -8px;
+            padding-left: 15px;
+        }
+
+        input {
             font-family: 'Nunito', sans-serif;
-            padding: 16px 20px;
-            border: 2px solid #f5a9b8; /* Rosa suave */
-            border-radius: 30px;
-            font-size: 16px;
+            padding: 15px 20px;
+            border: 2px solid #fce4ec;
+            border-radius: 25px;
+            font-size: 15px;
             font-weight: 600;
-            color: #ff3385;
+            color: #6d4c5a;
             outline: none;
             transition: all 0.3s ease;
-            background-color: rgba(255, 255, 255, 0.9);
-            box-shadow: inset 0 2px 5px rgba(255, 182, 193, 0.2);
+            background-color: rgba(255, 255, 255, 0.8);
         }
 
-        input[type="date"]:focus {
-            border-color: #5bcefa; /* Azul bebê no foco */
-            box-shadow: 0 0 15px rgba(91, 206, 250, 0.3);
+        input:focus {
+            border-color: #5bcefa;
+            box-shadow: 0 0 15px rgba(91, 206, 250, 0.4);
+            background-color: #fff;
         }
 
-        /* Botão Glossy Pink */
         button {
             font-family: 'Fredoka', sans-serif;
+            margin-top: 15px;
             padding: 18px;
             background: linear-gradient(135deg, #ff7eb3, #ff758c);
             color: white;
             border: none;
             border-radius: 30px;
-            font-size: 18px;
+            font-size: 20px;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 8px 20px rgba(255, 117, 140, 0.4);
+            box-shadow: 0 8px 25px rgba(255, 117, 140, 0.4);
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
         button:hover {
             transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 12px 25px rgba(255, 117, 140, 0.6);
+            box-shadow: 0 15px 30px rgba(255, 117, 140, 0.6);
             background: linear-gradient(135deg, #ff89b9, #ff8096);
         }
 
-        button:active {
-            transform: translateY(1px);
-        }
-
-        /* Área de Resultados */
-        #area-resultado {
-            margin-top: 30px;
+        /* Loading */
+        #loading {
             display: none;
-            animation: bounceIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .passos-calculo {
-            font-size: 14px;
-            font-weight: 600;
-            color: #9e6d81;
-            margin-bottom: 12px;
-            background: rgba(255, 255, 255, 0.7);
-            padding: 12px;
-            border-radius: 20px;
-            border: 1px dashed #f5a9b8;
-        }
-
-        .resultado-destaque {
-            font-family: 'Fredoka', sans-serif;
-            font-size: 24px;
-            color: #ffffff;
-            background: linear-gradient(135deg, #ff758c, #ff7eb3);
-            padding: 20px;
-            border-radius: 25px;
-            box-shadow: 0 10px 20px rgba(255, 117, 140, 0.3);
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-        }
-
-        /* Seção Sanfona (Como funciona) */
-        details {
-            margin-top: 30px;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 15px;
-            border-radius: 25px;
-            text-align: left;
-            transition: all 0.3s ease;
-            border: 1px solid #fce4ec;
-        }
-
-        summary {
-            font-family: 'Fredoka', sans-serif;
-            font-size: 16px;
-            color: #ff3385;
-            cursor: pointer;
-            list-style: none;
             text-align: center;
+            padding: 40px 0;
+        }
+        
+        .estrelas-girando {
+            font-size: 40px;
+            animation: spin 2s linear infinite;
+            display: inline-block;
         }
 
-        summary::-webkit-details-marker {
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* Dashboard de Resultados */
+        #mapa-resultado {
             display: none;
+            animation: fadeIn 0.8s ease;
         }
 
-        details h3 {
+        .saudacao-resultado {
             font-family: 'Fredoka', sans-serif;
-            font-size: 16px;
-            color: #5bcefa; /* Destaque no azul clarinho */
-            margin: 15px 0 5px 0;
-            text-shadow: 1px 1px 0px #ffffff;
+            color: #ff3385;
+            font-size: 28px;
+            text-align: center;
+            margin: 20px 0;
         }
 
-        details p {
-            font-size: 14px;
-            color: #7b5969;
-            line-height: 1.6;
+        /* Grid de Planetas */
+        .planets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .planet-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px 10px;
+            border-radius: 25px;
+            text-align: center;
+            border: 2px solid #fff;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease;
+        }
+
+        .planet-card:hover {
+            transform: translateY(-5px);
+            border-color: #5bcefa;
+        }
+
+        .planet-icon {
+            font-size: 32px;
+            margin-bottom: 5px;
+            display: block;
+            filter: drop-shadow(2px 2px 2px rgba(255, 105, 180, 0.2));
+        }
+
+        .planet-name {
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: #5bcefa;
+            letter-spacing: 1px;
+            display: block;
+        }
+
+        .sign-name {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 18px;
+            color: #ff758c;
             margin-top: 5px;
-            margin-bottom: 0;
+            display: block;
         }
 
-        /* Animação fofa do resultado */
-        @keyframes bounceIn {
-            0% { opacity: 0; transform: scale(0.9) translateY(10px); }
-            50% { opacity: 1; transform: scale(1.05) translateY(-5px); }
-            100% { transform: scale(1) translateY(0); }
+        /* Seção de Leituras */
+        .leitura-box {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 25px;
+            border-radius: 30px;
+            margin-bottom: 15px;
+            border: 2px dashed #ffb6c1;
+            position: relative;
         }
+
+        .leitura-box.love { border-color: #ff7eb3; background: rgba(255, 126, 179, 0.1); }
+        .leitura-box.action { border-color: #5bcefa; background: rgba(91, 206, 250, 0.1); }
+
+        .leitura-box h3 {
+            font-family: 'Fredoka', sans-serif;
+            margin-top: 0;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .leitura-box h3.sun-title { color: #ff9a9e; }
+        .leitura-box h3.love-title { color: #ff3385; }
+        .leitura-box h3.action-title { color: #00a8e8; }
+
+        .leitura-box p {
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 0;
+            color: #5a3d46;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Oculta form quando resultado aparece */
+        .hide { display: none !important; }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <h1>Arcano Pessoal 🎀✨</h1>
-        <p class="subtitle">Descubra a sua energia no Tarot 🦋</p>
+    <div class="container">
+        <div class="banner-img" id="banner"></div>
         
-        <div class="input-group">
-            <input type="date" id="dataNascimento">
-            <button onclick="calcularArcano()">Revelar minha magia 💖</button>
-        </div>
-
-        <div id="area-resultado">
-            <div id="passos" class="passos-calculo"></div>
-            <div id="resultado-final" class="resultado-destaque"></div>
-        </div>
-
-        <details>
-            <summary>Como funciona a magia? 🏳️‍⚧️✨</summary>
+        <div class="conteudo">
+            <h1>Meu Mapa Astral 🪐</h1>
+            <p class="subtitle" id="sub">Descubra a energia do universo em você 🏳️‍⚧️✨</p>
             
-            <h3>🌸 Seu mapa de vida</h3>
-            <p>O Arcano Pessoal funciona como o seu "signo" no Tarot. Ele revela traços profundos da sua personalidade, seus dons, sua beleza interior e a jornada incrível que você veio trilhar!</p>
+            <!-- Formulário Inicial -->
+            <div class="input-group" id="form-area">
+                <label>Como você se chama, princesa?</label>
+                <input type="text" id="nome" placeholder="Seu nome lindo...">
+                
+                <label>Data de Nascimento</label>
+                <input type="date" id="data">
+                
+                <label>Hora exata (opcional)</label>
+                <input type="time" id="hora">
+                
+                <button onclick="iniciarLeitura()">Ler as Estrelas 💖</button>
+            </div>
 
-            <h3>✨ A matemática mística</h3>
-            <p>Pegamos a sua data de nascimento (o dia que o universo ficou mais bonito) e somamos cada número. Se der mais que 22 (o número de Arcanos Maiores), nós somamos de novo até chegar no seu número especial!</p>
-        </details>
+            <!-- Tela de Carregamento -->
+            <div id="loading">
+                <div class="estrelas-girando">✨</div>
+                <h3 style="color: #ff758c; font-family: 'Fredoka';">Consultando os astros... 🔮</h3>
+            </div>
+
+            <!-- Dashboard de Resultados -->
+            <div id="mapa-resultado">
+                <h2 class="saudacao-resultado" id="texto-saudacao"></h2>
+                
+                <!-- O Grid dos Planetas -->
+                <div class="planets-grid">
+                    <div class="planet-card">
+                        <span class="planet-icon">☀️</span>
+                        <span class="planet-name">Sol</span>
+                        <span class="sign-name" id="s-sol"></span>
+                    </div>
+                    <div class="planet-card">
+                        <span class="planet-icon">🌙</span>
+                        <span class="planet-name">Lua</span>
+                        <span class="sign-name" id="s-lua"></span>
+                    </div>
+                    <div class="planet-card">
+                        <span class="planet-icon">⬆️</span>
+                        <span class="planet-name">Asc</span>
+                        <span class="sign-name" id="s-asc"></span>
+                    </div>
+                    <div class="planet-card">
+                        <span class="planet-icon">💖</span>
+                        <span class="planet-name">Vênus</span>
+                        <span class="sign-name" id="s-venus"></span>
+                    </div>
+                    <div class="planet-card">
+                        <span class="planet-icon">🔥</span>
+                        <span class="planet-name">Marte</span>
+                        <span class="sign-name" id="s-marte"></span>
+                    </div>
+                </div>
+
+                <!-- Leituras Aprofundadas -->
+                <div class="leitura-box">
+                    <h3 class="sun-title">☀️ Sua Essência (Sol)</h3>
+                    <p id="texto-sol"></p>
+                </div>
+
+                <div class="leitura-box love">
+                    <h3 class="love-title">💖 Como você ama (Vênus)</h3>
+                    <p id="texto-venus"></p>
+                </div>
+
+                <div class="leitura-box action">
+                    <h3 class="action-title">🔥 Seu poder de ação (Marte)</h3>
+                    <p id="texto-marte"></p>
+                </div>
+                
+                <button onclick="location.reload()" style="width: 100%; font-size: 16px; padding: 12px; background: #fff; color: #ff7eb3; border: 2px solid #ff7eb3; margin-top: 10px;">Fazer outro mapa 🦋</button>
+            </div>
+        </div>
     </div>
 
     <script>
-        const arcanos = {
-            1: "O Mago", 2: "A Sacerdotisa", 3: "A Imperatriz", 4: "O Imperador",
-            5: "O Hierofante", 6: "Os Enamorados", 7: "O Carro", 8: "A Justiça",
-            9: "O Eremita", 10: "A Roda da Fortuna", 11: "A Força", 12: "O Enforcado",
-            13: "A Morte", 14: "A Temperança", 15: "O Diabo", 16: "A Torre",
-            17: "A Estrela", 18: "A Lua", 19: "O Sol", 20: "O Julgamento",
-            21: "O Mundo", 22: "O Louco"
+        const signos = [
+            "Áries", "Touro", "Gêmeos", "Câncer", "Leão", "Virgem", 
+            "Libra", "Escorpião", "Sagitário", "Capricórnio", "Aquário", "Peixes"
+        ];
+
+        const leiturasSol = {
+            "Áries": "Você tem uma faísca única! Sua energia é pioneira e corajosa.",
+            "Touro": "A própria deusa da beleza. Sua força é estável e muito leal.",
+            "Gêmeos": "Sua mente é um universo brilhante! Comunicativa e super adaptável.",
+            "Câncer": "Seu coração é seu superpoder. Intuitiva e profundamente conectada.",
+            "Leão": "Você nasceu para brilhar! Sua criatividade inspira todo mundo.",
+            "Virgem": "A perfeição nos detalhes. Inteligente e com um dom para curar.",
+            "Libra": "A harmonia em pessoa. Você busca equilíbrio e espalha beleza.",
+            "Escorpião": "Intensidade e mistério! Uma profundidade emocional incrível.",
+            "Sagitário": "Aventureira e livre! Sua energia é otimista e expansiva.",
+            "Capricórnio": "A patroa! Determinada, focada, construindo seu império.",
+            "Aquário": "De outro mundo! Original, visionária e rebelde com causa.",
+            "Peixes": "Pura magia e fantasia. Sensível e com uma intuição absurda."
         };
 
-        function calcularArcano() {
-            const dataInput = document.getElementById('dataNascimento').value;
-            const areaResultado = document.getElementById('area-resultado');
-            const divPassos = document.getElementById('passos');
-            const divResultado = document.getElementById('resultado-final');
+        const leiturasVenus = {
+            "Áries": "No amor, você é fogo! Apaixona-se rápido, gosta da conquista e não tem paciência para joguinhos. Vai direto ao ponto.",
+            "Touro": "Você ama com os 5 sentidos. Precisa de toque físico, presentes fofos e muita lealdade. O romance clássico é com você.",
+            "Gêmeos": "Para te conquistar, precisam conquistar sua mente primeiro. Você ama conversar, dar risada e odeia cair na rotina.",
+            "Câncer": "Você ama de forma profunda e protetora. Busca segurança emocional e quer um amor que pareça 'voltar para casa'.",
+            "Leão": "Quando ama, você é espetacular! Gosta de admirar e ser admirada. Seu amor é caloroso, generoso e muito leal.",
+            "Virgem": "Seu amor é prático. Você demonstra que ama cuidando dos detalhes da vida da pessoa e resolvendo os problemas dela.",
+            "Libra": "Você vive para o romance! Gosta de parcerias estéticas, justas e gentis. O flerte é basicamente seu esporte favorito.",
+            "Escorpião": "Tudo ou nada. Seu amor é possessivo (no bom sentido), intenso, transformador e busca fusão total de almas.",
+            "Sagitário": "Amor para você é liberdade. Precisa de alguém que tope aventuras e que não tente te prender em gaiolas emocionais.",
+            "Capricórnio": "Você não perde tempo com amores incertos. Busca parceiros ambiciosos e estruturados. Amor, para você, é construção.",
+            "Aquário": "Seu amor começa sempre na amizade. Você valoriza o intelecto, a independência e detesta grude excessivo.",
+            "Peixes": "A romântica incurável! Você ama de forma incondicional, poética e muitas vezes idealiza quem rouba seu coração."
+        };
 
+        function descobrirSigno(dia, mes) {
+            if ((mes == 1 && dia >= 20) || (mes == 2 && dia <= 18)) return "Aquário";
+            if ((mes == 2 && dia >= 19) || (mes == 3 && dia <= 20)) return "Peixes";
+            if ((mes == 3 && dia >= 21) || (mes == 4 && dia <= 19)) return "Áries";
+            if ((mes == 4 && dia >= 20) || (mes == 5 && dia <= 20)) return "Touro";
+            if ((mes == 5 && dia >= 21) || (mes == 6 && dia <= 20)) return "Gêmeos";
+            if ((mes == 6 && dia >= 21) || (mes == 7 && dia <= 22)) return "Câncer";
+            if ((mes == 7 && dia >= 23) || (mes == 8 && dia <= 22)) return "Leão";
+            if ((mes == 8 && dia >= 23) || (mes == 9 && dia <= 22)) return "Virgem";
+            if ((mes == 9 && dia >= 23) || (mes == 10 && dia <= 22)) return "Libra";
+            if ((mes == 10 && dia >= 23) || (mes == 11 && dia <= 21)) return "Escorpião";
+            if ((mes == 11 && dia >= 22) || (mes == 12 && dia <= 21)) return "Sagitário";
+            return "Capricórnio";
+        }
+
+        function iniciarLeitura() {
+            const dataInput = document.getElementById('data').value;
             if (!dataInput) {
-                alert("Amor, não esquece de colocar sua data primeiro! 🎀");
+                alert("Amor, preciso da sua data de nascimento! 🥺🎀");
                 return;
             }
 
-            areaResultado.style.display = "block";
+            // Esconde form, mostra loading
+            document.getElementById('form-area').classList.add('hide');
+            document.getElementById('loading').style.display = 'block';
 
-            const numeros = dataInput.replace(/-/g, '');
-            let soma = 0;
-            let passosHTML = `<strong>Fazendo a mágica:</strong><br>`;
-            let equacaoInicial = [];
+            // Simula um tempo de carregamento mágico (2 segundos)
+            setTimeout(gerarMapa, 2000);
+        }
 
-            for (let i = 0; i < numeros.length; i++) {
-                soma += parseInt(numeros[i]);
-                equacaoInicial.push(numeros[i]);
-            }
-            passosHTML += `${equacaoInicial.join(' + ')} = <strong>${soma}</strong><br>`;
+        function gerarMapa() {
+            const nome = document.getElementById('nome').value || "Anjo";
+            const dataInput = document.getElementById('data').value;
+            
+            const partesData = dataInput.split('-');
+            const mes = parseInt(partesData[1], 10);
+            const dia = parseInt(partesData[2], 10);
+            
+            const signoSol = descobrirSigno(dia, mes);
+            
+            // Simulação (Sorteio) dos outros astros
+            const signoLua = signos[Math.floor(Math.random() * signos.length)];
+            const signoAsc = signos[Math.floor(Math.random() * signos.length)];
+            const signoVenus = signos[Math.floor(Math.random() * signos.length)];
+            const signoMarte = signos[Math.floor(Math.random() * signos.length)];
 
-            while (soma > 22) {
-                let novaSoma = 0;
-                let somaStr = soma.toString();
-                let equacaoReducao = [];
-                
-                for (let i = 0; i < somaStr.length; i++) {
-                    novaSoma += parseInt(somaStr[i]);
-                    equacaoReducao.push(somaStr[i]);
-                }
-                passosHTML += `Como ${soma} é maior que 22:<br>${equacaoReducao.join(' + ')} = <strong>${novaSoma}</strong><br>`;
-                soma = novaSoma;
-            }
+            // Preenche os dados
+            document.getElementById('texto-saudacao').innerText = `O Céu de ${nome} 🌸`;
+            document.getElementById('s-sol').innerText = signoSol;
+            document.getElementById('s-lua').innerText = signoLua;
+            document.getElementById('s-asc').innerText = signoAsc;
+            document.getElementById('s-venus').innerText = signoVenus;
+            document.getElementById('s-marte').innerText = signoMarte;
+            
+            // Textos
+            document.getElementById('texto-sol').innerText = leiturasSol[signoSol];
+            document.getElementById('texto-venus').innerText = leiturasVenus[signoVenus];
+            document.getElementById('texto-marte').innerText = "Você tem uma força motriz incrível. Marte em " + signoMarte + " mostra que sua paixão e forma de ir atrás dos seus sonhos têm uma energia " + (signoMarte === 'Áries' || signoMarte === 'Leão' || signoMarte === 'Sagitário' ? 'poderosa, quente e impulsiva!' : (signoMarte === 'Touro' || signoMarte === 'Virgem' || signoMarte === 'Capricórnio' ? 'estrategista, paciente e inabalável!' : 'muito magnética, inteligente e criativa!'));
 
-            divPassos.innerHTML = passosHTML;
-            divResultado.innerHTML = `🌟 ${soma} - ${arcanos[soma]} 🌟`;
+            // Esconde loading, mostra dashboard
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('mapa-resultado').style.display = 'block';
+            document.getElementById('sub').style.display = 'none'; // esconde subtítulo
         }
     </script>
 
